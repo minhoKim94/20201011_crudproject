@@ -1,0 +1,59 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Show_data</title>
+    <!-- 합쳐지고 최소화된 최신 CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+
+    <!-- 부가적인 테마 -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+
+    <!-- 합쳐지고 최소화된 최신 자바스크립트 -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+
+    <div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Emp_ID</th>
+                    <th>Name</th>
+                    <th>Address</th>
+                    <th>City</th>
+                    <th>Pin_Code</th>
+                    <th>Designation</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @{
+                    foreach (System.Data.DataRow dr in ViewBag.emp.Rows)
+                    {
+                        <tr>
+                            <td>@dr["Emp_id"]</td>
+                            <td>@dr["Name"]</td>
+                            <td>@dr["Address"]</td>
+                            <td>@dr["City"]</td>
+                            <td>@dr["Pin_Code"]</td>
+                            <td>@dr["Designation"]</td>
+                            <td>
+                                <a href="/Home/update_record?id=@dr["Emp_id"]">Update</a>
+                                <a href="/Home/Delete_record?id=@dr["Emp_id"]">Delete</a>
+                            </td>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
